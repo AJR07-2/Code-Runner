@@ -1,0 +1,24 @@
+{
+  "name": "Code-Runner",
+  "version": "1.0.0",
+  "description": "**WIP**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AJR07-2/Code-Runner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AJR07-2/Code-Runner/issues"
+  },
+  "homepage": "https://github.com/AJR07-2/Code-Runner#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  },
+  "devDependencies": {}
+}
