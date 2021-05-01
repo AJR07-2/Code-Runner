@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/AJR07-2/Code-Runner#readme",
   "dependencies": {
-    "discord.js": "^12.5.3"
+    "discord.js": "^12.5.3",
+    "pm2": "^4.5.6"
   },
   "devDependencies": {}
 }
