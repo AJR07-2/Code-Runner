@@ -64,16 +64,24 @@ client.on('ready', () => {
                         timedDelay += parseInt(delay.substring(lastInterval - 1, delay.indexOf("d"))) * 60 * 60 * 24;
                         lastInterval = delay.indexOf("d");
                     }
+                    //check if the delay is NaN
+                    if (isNaN(timedDelay)) {
+                        throw "ah";
+                    }
                 }
             } else {
                 throw "ahhh";
             }
-        } catch {
-            invalidSyntax(message);
-            console.log(delay, "invalid syntax! (delay)");
+        } catch (error) {
+            if (error === "ah") {
+                invalidSyntax(message, `Your syntax must match "!rm {time} [reminder]" and time must be in the format of (value)(specifier -> either s for seconds, m for minutes, h for hours, d for daily)`);
+            } else {
+                invalidSyntax(message, "An unknown error occurred");
+            }
+            console.log(delay, "invalid syntax! (delay)", error);
             return;
         }
-        
+
         message.channel.send(
             new Discord.MessageEmbed()
                 .setColor('00ff00')
@@ -84,14 +92,16 @@ client.on('ready', () => {
         );
 
         //delay the sending of reminder
+        var date = new Date();
+        var formattedDate = `(Date: ${date.getFullYear()}-${date.getMonth() + 1}, Time: ${date.getDate()}-${date.getHours()}h ${date.getMinutes()}m ${date.getSeconds()}s)`;
         setTimeout(() => {
             message.author.send(
                 new Discord.MessageEmbed()
                     .setColor('0000ff')
                     .setTitle('Reminder')
                     .setFooter("Code Runner!")
-                    .addField("Reminder", reminder, true)
-                    .setDescription(`U asked to be reminded of this ${timedDelay} seconds ago`)
+                    .addField("Message", reminder, true)
+                    .setDescription(`U asked to be reminded at ${formattedDate}`)
             );
         }, timedDelay*1000);
     })
