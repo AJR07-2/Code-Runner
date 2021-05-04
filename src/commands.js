@@ -11,7 +11,7 @@ module.exports = (client, aliases, callback) => { //pass in discord bot (to list
             const command = `${prefix}${alias}`;
 
             if (content.startsWith(`${command} ` || content == command)) { //check if the user's message is actually that command
-                console.log(`Running command ${command}`);
+                console.log(`Running command ${command}, message sent: "${content}"`);
                 callback(message);
             }
         });
