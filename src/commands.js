@@ -10,7 +10,7 @@ module.exports = (client, aliases, callback) => { //pass in discord bot (to list
         aliases.forEach(alias => { //loop thru the loop we created above and check if an alias was ran
             const command = `${prefix}${alias}`;
 
-            if (content.startsWith(`${command} ` || content == command)) { //check if the user's message is actually that command
+            if (content.startsWith(`${command}`)) { //check if the user's message is actually that command
                 console.log(`Running command ${command}, message sent: "${content}"`);
                 callback(message);
             }
