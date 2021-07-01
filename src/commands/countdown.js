@@ -27,8 +27,8 @@ module.exports = async (message) => {
         .addField("Initalizing...", "Waiting...", true)
         .addField("Message", countdownMessage, true)
     );
-
-    startCountdown(time, sent, countdownMessage, message);
+    
+    startCountdown(time + 5, sent, countdownMessage, message);
   } else {
     invalidSyntax(
       message,
@@ -47,10 +47,10 @@ function parseSeconds(time) {
 }
 
 function startCountdown(time, message, countdownMessage, authorMessage) {
+  time-=5;
   let [seconds, minutes, hours] = parseSeconds(time),
     colour = "0000ff";
-  time--;
-  if (time === 0) {
+  if (time <= 0) {
     message.channel.send(
       "<@" + authorMessage.author.id + "> " + `Countdown "${countdownMessage}" is over!`
     );
@@ -63,7 +63,7 @@ function startCountdown(time, message, countdownMessage, authorMessage) {
     return;
   }
 
-  if (time < 5) colour = "ff0000";
+  if (time < 20) colour = "ff0000";
 
   message.edit(
     new Discord.MessageEmbed()
@@ -75,5 +75,5 @@ function startCountdown(time, message, countdownMessage, authorMessage) {
   );
   setTimeout(() => {
     startCountdown(time, message, countdownMessage, authorMessage);
-  }, 1000);
+  }, 5000);
 }
