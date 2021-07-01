@@ -1,3 +1,4 @@
+const Discord = require("discord.js");
 module.exports = (message, description) => {
     message.channel.send(
         new Discord.MessageEmbed()
