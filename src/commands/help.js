@@ -11,6 +11,7 @@ module.exports = (message) => {
     if (content == "rm") toOutput = details.rm;
     else if (content == "help") toOutput = details.help;
     else if (content == "countdown") toOutput = details.countdown;
+    else if (content == "kymchi") toOutput = details.kymchi;
     else {
       invalidSyntax(message, "No such command");
       return;
